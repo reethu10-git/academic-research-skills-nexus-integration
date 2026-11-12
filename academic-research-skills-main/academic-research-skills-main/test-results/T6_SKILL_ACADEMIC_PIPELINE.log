@@ -1,0 +1,43 @@
+﻿STDOUT:
+To initialize your new research project, "Comparative Efficiency of LoRA vs Prompt Tuning," I have outlined the full academic pipeline below.
+
+### Pipeline Stages
+The `academic-pipeline` (v3.24.0) consists of 10 stages, as follows:
+
+1.  **RESEARCH**: Conducts background research and defines the scope.
+2.  **WRITE**: Drafts the paper.
+3.  **INTEGRITY (Stage 2.5)**: Pre-review integrity verification (citations, registered claims, reported data).
+4.  **REVIEW**: Full peer review (multi-perspective).
+5.  **REVISE**: Revision based on reviewer comments.
+6.  **RE-REVIEW (Stage 3')**: Focused verification review of revisions.
+7.  **RE-REVISE (Stage 4')**: Second revision (if necessary, following major review comments).
+8.  **FINAL INTEGRITY (Stage 4.5)**: Comprehensive final verification.
+9.  **FINALIZE**: Formatting, compilation, and final output generation.
+10. **PROCESS SUMMARY**: Final process record generation and AI behavioral self-assessment.
+
+### Entry Stage
+For a new project without existing materials, the pipeline initializes at **Stage 1: RESEARCH**.
+
+### Required Artifacts (Stage 1)
+Upon completion of the Research stage, the following artifacts are generated and passed to subsequent stages:
+*   **RQ Brief** (Research Question Brief)
+*   **Methodology Blueprint**
+*   **Annotated Bibliography**
+*   **Synthesis Report**
+*   **INSIGHT Collection**
+
+### Stage 2.5 Integrity Gate Requirements
+This is a mandatory integrity verification checkpoint run after the initial draft completion (Stage 2) and before submission for review (Stage 3).
+*   **Protocol**: 5-phase verification: references, citation context, statistical data, originality, and claims.
+*   **Failure Modes**: Must run the **AI Research Failure Mode Checklist** (7-mode taxonomy covering hallucination, shortcut reliance, fabrication, etc.).
+*   **Blocking**: If a failure is detected in a blocking mode, the pipeline **blocks** until the issue is resolved or a recorded override is provided.
+*   **Outcome**: Produces an integrity verification report. Issues must be addressed before the pipeline proceeds to the Review stage.
+
+
+STDERR:
+Claude Code doesn't recognize the model "gemini-3.1-flash-lite", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"gemini-3.1-flash-lite","query_source":"sdk"}
+
+
+EXIT_CODE: 0
+ELAPSED_MS: 196733

@@ -1,0 +1,62 @@
+﻿TEST_ID: SKILL_SR_SCREENER
+CATEGORY: Skill
+DESCRIPTION: Execute study screening on sample records with dual-blind review and adjudication
+EXIT_CODE: 0
+ELAPSED_MS: 32073
+
+STDOUT:
+Following the protocol for 'Quantization of Small Language Models (<3B parameters) for Reasoning Tasks', here are the independent screening decisions for the three provided records.
+
+### Screening Protocol Summary
+*   **Inclusion:** Empirical evaluation of quantized SLMs (<3B parameters) on reasoning benchmarks.
+*   **Exclusion:** Non-empirical papers, models ΓëÑ3B parameters, non-reasoning evaluations.
+
+---
+
+### Record 1: 'Evaluating 4-bit AWQ on Phi-3-mini (3.8B) for code generation'
+
+| Reviewer | Decision | Exclusion Code | Rationale |
+| :--- | :--- | :--- | :--- |
+| **Reviewer A** | Exclude | E1 | Model size (3.8B) exceeds the 3B parameter limit. |
+| **Reviewer B** | Exclude | E1 | Model size (3.8B) exceeds the 3B parameter limit; also fails task relevance (code generation vs reasoning). |
+| **Adjudication** | **Exclude** | **E1** | Consensus: Model size exceeds threshold. |
+
+---
+
+### Record 2: 'Quantization-Aware Training of 1.1B TinyLlama for mathematical reasoning'
+
+| Reviewer | Decision | Exclusion Code | Rationale |
+| :--- | :--- | :--- | :--- |
+| **Reviewer A** | Include | N/A | Fits criteria: 1.1B model (<3B) and mathematical reasoning benchmark. |
+| **Reviewer B** | Include | N/A | Fits criteria: 1.1B model (<3B) and mathematical reasoning benchmark. |
+| **Adjudication** | **Include** | **N/A** | Consensus: Meets all inclusion criteria. |
+
+---
+
+### Record 3: 'A survey of reasoning capabilities in large generative foundation models'
+
+| Reviewer | Decision | Exclusion Code | Rationale |
+| :--- | :--- | :--- | :--- |
+| **Reviewer A** | Exclude | E3 | Non-empirical survey; focuses on large models, not specific quantized <3B SLMs. |
+| **Reviewer B** | Exclude | E3 | Non-empirical survey; scope is large foundation models, not the target SLM range. |
+| **Adjudication** | **Exclude** | **E3** | Consensus: Study type is non-empirical (survey) and model scope is out of range. |
+
+---
+
+### Final Summary Table
+
+| Record ID | Reviewer A | Reviewer B | Adjudication | Exclusion Code |
+| :--- | :--- | :--- | :--- | :--- |
+| Record 1 | Exclude | Exclude | **Exclude** | E1 |
+| Record 2 | Include | Include | **Include** | N/A |
+| Record 3 | Exclude | Exclude | **Exclude** | E3 |
+
+**Exclusion Code Key:**
+*   **E1:** Model parameters exceed 3B limit.
+*   **E3:** Non-empirical paper (Survey/Review).
+
+
+STDERR:
+Claude Code doesn't recognize the model "gemini-3.1-flash-lite", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"gemini-3.1-flash-lite","query_source":"sdk"}
+

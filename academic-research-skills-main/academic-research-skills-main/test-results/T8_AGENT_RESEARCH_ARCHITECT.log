@@ -1,0 +1,61 @@
+﻿STDOUT:
+# Methodology Blueprint: Comparing LoRA and Prompt-Tuning in Small Language Models (<3B parameters)
+
+**Role:** Research Architect
+**Phase:** 1 (Design & Methodology)
+**Subject:** Comparative efficacy of PEFT (Parameter-Efficient Fine-Tuning) methods in constrained parameter environments.
+
+---
+
+## 1. Research Paradigm
+This study adopts a **Positivist Experimental Paradigm**. We treat the choice of PEFT method (LoRA vs. Prompt-Tuning) as the independent variable and performance/efficiency metrics as the dependent variables. The focus is on quantifiable outcomes (accuracy, throughput, parameter efficiency) within a strictly controlled inference and training environment, aiming for reproducibility across standardized hardware benchmarks.
+
+## 2. Methodology: Comparative Experimental Design
+We utilize a **Within-Subjects Design** to control for inter-model variance.
+*   **Target Models:** Select 3 representative SLMs under 3B parameters (e.g., Phi-3-mini-4k, Gemma-2B, Qwen2-1.5B) to ensure cross-architecture validity.
+*   **Comparison Groups:**
+    *   **Group A (LoRA):** Low-Rank Adaptation with rank configurations (r=8, 16, 32) applied to attention projections.
+    *   **Group B (Prompt-Tuning):** Soft prompt tokens concatenated to input embeddings with varying lengths (L=10, 20, 50).
+*   **Baseline:** Full fine-tuning (partial layers) and Zero-Shot baseline for calibration.
+
+## 3. Data Strategy
+To ensure the findings are generalizable, data will be partitioned across tasks of varying linguistic complexity.
+*   **Corpus Selection:**
+    *   *Task 1 (Classification):* AG News (Text classification).
+    *   *Task 2 (Reasoning):* GSM8K (Chain-of-thought reasoning).
+    *   *Task 3 (Generation):* CNN/DailyMail (Summarization).
+*   **Preprocessing:** Uniform truncation (512 tokens), standardized padding, and identical tokenizer normalization to avoid artifact injection.
+*   **Integrity Gate:** Data used in training will be scrubbed of duplicates; validation/test splits will be static across all model/PEFT permutations.
+
+## 4. Analytical Framework
+We will measure performance across two dimensions: **Model Quality** and **Resource Efficiency**.
+
+### A. Performance Metrics
+*   **Quality:** Accuracy (Classification), BLEU/ROUGE-L (Summarization), and exact match (Reasoning).
+*   **Efficiency:**
+    *   *VRAM Utilization:* Peak memory usage during training (MiB).
+    *   *Training Throughput:* Samples/second.
+    *   *Latency:* Mean inference time (ms) on a single GPU (e.g., NVIDIA A100/T4).
+
+### B. Statistical Rigor
+*   All experiments will be run with 3 distinct random seeds.
+*   Significance testing will employ **Wilcoxon Signed-Rank Tests** (non-parametric) for pairwise comparisons, assuming non-normal distribution of performance gains in low-rank approximations.
+
+## 5. Validity & Reliability Criteria
+*   **Internal Validity:** Strict locking of hyper-parameters (learning rate, batch size, epochs) across all PEFT methods.
+*   **External Validity:** Selection of diverse model architectures (Transformer-based vs. hybrid/optimized).
+*   **Integrity Checks:**
+    *   *Drift Audit:* Each experiment will include a hash-pinned snapshot of weights to ensure training convergence is attributable to the method, not stochastic initialization.
+    *   *Reproducibility:* All training configurations will be serialized into a single `experiment_config.json` schema, adhering to `academic-pipeline` versioning standards.
+
+---
+*End of Blueprint Phase 1. Ready for transition to Phase 2 (Literature Strategy & Corpus Intake).*
+
+
+STDERR:
+Claude Code doesn't recognize the model "gemini-3.1-flash-lite", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"gemini-3.1-flash-lite","query_source":"sdk"}
+
+
+EXIT_CODE: 0
+ELAPSED_MS: 90654

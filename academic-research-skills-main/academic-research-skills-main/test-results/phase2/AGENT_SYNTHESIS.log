@@ -1,0 +1,39 @@
+﻿TEST_ID: AGENT_SYNTHESIS
+CATEGORY: Agent
+DESCRIPTION: Synthesize conflicting quantization findings and map research gaps
+EXIT_CODE: 0
+ELAPSED_MS: 10331
+
+STDOUT:
+As requested, here is the synthesis of the conflicting findings regarding the performance of 4-bit quantization in 2B-parameter models.
+
+### 1. Convergence and Divergence Mapping
+
+| Aspect | Study 1 (PTQ) | Study 2 (QAT) | Synthesis |
+| :--- | :--- | :--- | :--- |
+| **Consensus** | 4-bit quantization creates high instability for sub-7B models. | 4-bit quantization creates high instability for sub-7B models. | **Convergence:** 2B-scale models exhibit extreme sensitivity to precision reduction; 4-bit is a critical fragility threshold. |
+| **Variable** | PTQ (Post-Training) | QAT (Quantization-Aware) | **Divergence:** The method of adaptation is the primary determinant of failure vs. preservation. |
+| **Result** | Catastrophic collapse in multi-step reasoning. | ~95% retention of reasoning capability. | **Divergence:** The performance gap is significant and method-dependent, not inherent to the precision itself. |
+
+### 2. Evidence Conflict Resolution: Technical Mechanisms
+
+The conflict between these studies is resolved by recognizing the difference between **representation shifting** (PTQ) and **representation adaptation** (QAT).
+
+*   **PTQ Failure (Study 1):** In 2B models, the "reasoning" logic is often highly compressed. PTQ applies quantization noise to weights *after* convergence. In models with fewer parameters, individual weight precision is paramount; there is less redundancy to "absorb" the rounding errors. The collapse occurs because the rounding errors in PTQ disproportionately affect the high-magnitude activations required for multi-step reasoning, severing the model's coherent internal logic paths.
+*   **QAT Success (Study 2):** QAT introduces quantization noise *during* the training/fine-tuning phase. The model's weights effectively "learn" to compensate for the reduced precision. The crucial mechanism here is the synergy with **Chain-of-Thought (CoT) demonstrations**. CoT acts as a structural regularizer; by training on step-by-step reasoning, the model builds more robust, self-correcting internal representations. This structural resilience allows the model to map the complex logical tasks into the restricted 4-bit weight space without losing the semantic consistency required for math reasoning.
+
+**Conclusion:** The collapse is not a result of "4-bit quantization," but of "4-bit quantization without adaptive regularization."
+
+### 3. Prioritized Research Gaps
+
+To move the field forward, the following research gaps should be prioritized:
+
+1.  **Scaling Law Sensitivity (The "Fragility Threshold"):** Determine if the "catastrophic collapse" observed at 2B is linear or non-linear. Is there a precise parameter count where PTQ becomes viable for reasoning tasks, or is 2B the lower bound of structural fragility?
+2.  **CoT-Dependent Regularization:** Is the success of QAT in Study 2 dependent on the *presence* of CoT, or could similar retention be achieved via standard instruction tuning? This isolates whether the benefit comes from the training data structure or the optimization process itself.
+3.  **Component-Wise Sensitivity Analysis:** Quantize attention heads and MLP layers separately in a 2B model to identify which architectural block is the primary source of the "reasoning collapse." This could lead to *Mixed-Precision* strategies (e.g., 4-bit MLP, 8-bit Attention) that could recover the missing 5% of performance while maintaining efficiency.
+
+
+STDERR:
+Claude Code doesn't recognize the model "gemini-3.1-flash-lite", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"gemini-3.1-flash-lite","query_source":"sdk"}
+

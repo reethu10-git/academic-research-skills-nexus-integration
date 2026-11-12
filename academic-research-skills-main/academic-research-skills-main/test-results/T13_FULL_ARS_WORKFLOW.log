@@ -1,0 +1,39 @@
+﻿STDOUT:
+I have initialized the **Phase 1 Academic Research Planning Workflow** as requested, engaging a Research Architect subagent to generate the research question, scope, methodological blueprint, and execution plan for your study on PEFT vs. Prompt-Tuning in Small Language Models.
+
+The agent is currently working in the background. I will notify you as soon as the blueprint is finalized and ready for your review.
+
+The **Phase 1 Academic Research Planning Workflow** is complete. The Research Architect agent has developed the following methodological blueprint for your study.
+
+### Summary of Planning Results
+
+#### 1. Research Question and Scope
+*   **Question:** Comparing LoRA (PEFT) and Prompt-Tuning in Small Language Models (<3B parameters) regarding predictive performance and computational efficiency.
+*   **Scope:** Focuses on <3B parameter models (e.g., Phi-3, TinyLlama). Metrics include F1/ROUGE scores (predictive) and VRAM/training time (efficiency).
+
+#### 2. Methodological Blueprint
+*   **Paradigm:** Positivist/Quantitative Experimental Design.
+*   **Analytical Framework:** Standardized control of hardware and hyperparameters, paired T-tests for statistical significance, and Pareto frontier analysis for efficiency.
+*   **Validity:** Rigorous control of stochastics via seeded runs and cross-architecture evaluation.
+
+#### 3. Execution Plan
+*   **Phase I:** Literature synthesis, infrastructure setup, and baseline establishment.
+*   **Phase II:** Systematic implementation, data collection (logs, VRAM), and statistical validation.
+*   **Phase III:** Comparative analysis, synthesis of findings, and report compilation.
+
+***
+
+*Methodological Note:* This blueprint is a structural guide. No literature or empirical data has been included at this stage; these will be collected and analyzed systematically in the subsequent phases.
+
+**How would you like to proceed?**
+*   **Approve this plan:** I can move to initiate **Phase I: Preparation and Baseline Definition**.
+*   **Refine the plan:** Let me know if you would like to adjust the scope (e.g., adding specific models or datasets) or the methodology before we begin.
+
+
+STDERR:
+Claude Code doesn't recognize the model "gemini-3.1-flash-lite", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"gemini-3.1-flash-lite","query_source":"sdk"}
+
+
+EXIT_CODE: 0
+ELAPSED_MS: 120819

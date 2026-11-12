@@ -1,0 +1,63 @@
+﻿STDOUT:
+**Creating the Outline**
+
+I've examined the ARS structural standards for empirical papers, and I'm ready to construct the outline for "Parameter-Efficient Fine-Tuning of Small Language Models for Edge AI." I'll follow the IMRaD format, providing the requested section headings, subsections, and estimated word counts. This will satisfy your request while adhering to the rigorous academic paper standards outlined in the `academic-paper` skill documentation.
+
+
+### Paper Outline: Parameter-Efficient Fine-Tuning of Small Language Models for Edge AI
+
+**Total Word Count Goal:** 5,000ΓÇô8,000 words (Standard Empirical Paper)
+
+| Section | Subsection | Word Allocation |
+| :--- | :--- | :--- |
+| **Abstract** | Bilingual (EN/zh-TW), Summary, Keywords | 300ΓÇô500 |
+| **1. Introduction** | Background, Problem, Contributions | 800ΓÇô1,000 |
+| **2. Related Work** | SLMs, PEFT, Edge AI context | 1,000ΓÇô1,200 |
+| **3. Methodology** | Proposed Framework, Datasets, Metrics | 1,200ΓÇô1,500 |
+| **4. Results** | Performance, Resource Utilization, Ablation | 1,200ΓÇô1,500 |
+| **5. Discussion** | Trade-offs, Implications, Limitations | 800ΓÇô1,000 |
+| **6. Conclusion** | Summary, Future Work | 300ΓÇô500 |
+| **References** | Citation List | N/A |
+
+---
+
+### Detailed Outline
+
+#### 1. Introduction
+*   **1.1 Background and Motivation:** Discuss the rise of Small Language Models (SLMs) and the critical need for on-device AI in edge computing environments (e.g., IoT, robotics, mobile devices) to address latency and privacy concerns.
+*   **1.2 Problem Statement:** Highlight the computational and memory barriers preventing full fine-tuning of LLMs on resource-constrained edge hardware.
+*   **1.3 Research Objectives and Contributions:** Outline the core goal of evaluating PEFT methods (LoRA, Adapter, etc.) specifically for SLMs on edge devices, presenting a new framework/optimized approach.
+
+#### 2. Related Work
+*   **2.1 Small Language Models (SLMs):** Review current state-of-the-art SLMs (< 7B parameters) and their capabilities.
+*   **2.2 Parameter-Efficient Fine-Tuning (PEFT):** Summarize existing PEFT techniques (e.g., LoRA, QLoRA, Prefix Tuning) and their efficacy in traditional cloud-based fine-tuning scenarios.
+*   **2.3 Edge AI Challenges:** Identify the hardware limitations (compute/memory/battery) inherent to edge deployment and the existing literature gap for optimized PEFT in these specific environments.
+
+#### 3. Methodology
+*   **3.1 Proposed PEFT Framework:** Detail the adaptation of chosen PEFT methods for constrained resource budgets.
+*   **3.2 Dataset Selection and Preprocessing:** Describe datasets used (e.g., instruction tuning datasets optimized for edge tasks).
+*   **3.3 Hardware Constraints and Edge Deployment Scenario:** Define the testing hardware (e.g., Raspberry Pi, Jetson Nano) and the simulation/deployment environment.
+*   **3.4 Evaluation Metrics:** Define metrics (e.g., perplexity, accuracy on downstream tasks, latency, memory usage, power consumption).
+
+#### 4. Results
+*   **4.1 Performance Analysis:** Compare baseline models with PEFT-tuned SLMs regarding task accuracy.
+*   **4.2 Resource Utilization:** Present quantitative results on latency, memory footprints during inference/training, and power consumption statistics.
+*   **4.3 Ablation Studies:** Analyze the impact of different PEFT hyperparameters (rank, target modules) on performance versus efficiency.
+
+#### 5. Discussion
+*   **5.1 Trade-offs between Efficiency and Performance:** Critically evaluate the Pareto frontier between accuracy gains and resource expenditure for edge scenarios.
+*   **5.2 Implications for Edge AI Deployment:** Discuss the real-world utility of the findings for edge AI developers and industry practitioners.
+*   **5.3 Limitations:** Acknowledge constraints in study scope (e.g., specific hardware used, dataset limitations, potential overfitting).
+
+#### 6. Conclusion
+*   **6.1 Summary of Findings:** Synthesize the key outcomes of the research.
+*   **6.2 Future Work:** Suggest paths for further research, such as hardware-aware optimization or integration into specialized edge software stacks.
+
+
+STDERR:
+Claude Code doesn't recognize the model "gemini-3.1-flash-lite", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"gemini-3.1-flash-lite","query_source":"sdk"}
+
+
+EXIT_CODE: 0
+ELAPSED_MS: 271047

@@ -1,0 +1,31 @@
+{
+  "review_title": "Quantized Model Reasoning Benchmarking (<3B)",
+  "exclusion_codes": [
+    {"code": "E1", "short": "publication type", "label": "Publication type (review, editorial, letter, comment, erratum, protocol, conference abstract, case report ...)"},
+    {"code": "E2", "short": "not quantized", "label": "Model is not quantized"},
+    {"code": "E3", "short": "size", "label": "Model size >= 3B parameters"},
+    {"code": "E4", "short": "no reasoning task", "label": "Task does not involve reasoning"},
+    {"code": "E5", "short": "no empirical evaluation", "label": "Study lacks empirical evaluation of reasoning performance"},
+    {"code": "E9", "short": "other", "label": "Other (explained)"}
+  ],
+  "core_criteria": ["Quantized model < 3B parameters", "Empirical reasoning task evaluation"],
+  "personas": {
+    "A": "You are REVIEWER A, a machine learning researcher with expertise in quantization and on-device reasoning.",
+    "B": "You are REVIEWER B, a systematic-review methodologist experienced in AI benchmarking reviews."
+  },
+  "conflict_policy": "adjudicate",
+  "qc": {
+    "near_miss": {
+      "size": ["3B", "3 billion", "parameter"],
+      "quantization": ["quantized", "FP8", "INT4"]
+    },
+    "random_exclusion_sample": 100,
+    "random_seed": 2026,
+    "policy": "advance"
+  },
+  "languages_allowed": ["English"],
+  "models": {"A": "sonnet", "B": "sonnet", "ADJ": "sonnet", "QC": "sonnet", "FTA": "sonnet", "FTB": "sonnet", "FTADJ": "sonnet"},
+  "agent_type": "academic-research-skills:screening_reviewer_agent",
+  "batching": {"max_records": 50, "max_chars": 90000, "wrap": 150},
+  "dedup": {"doi_title_guard": true}
+}
