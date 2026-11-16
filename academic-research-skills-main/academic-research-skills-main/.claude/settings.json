@@ -1,9 +1,0 @@
-{
-  "model": "gemini-3.1-flash-lite",
-  "effortLevel": "low",
-  "env": {
-    "ANTHROPIC_BASE_URL": "https://nexusapi.navigatelabs.ai",
-    "ANTHROPIC_MODEL": "gemini-3.1-flash-lite",
-    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096"
-  }
-}
