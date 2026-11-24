@@ -1,0 +1,1035 @@
+{
+  "version": "1.0.0",
+  "suite_version": "3.24.0",
+  "description": "Canonical machine-readable metadata registry of the 43 ARS prompt roles for selective role routing and token optimization.",
+  "total_roles": 43,
+  "total_bytes": 1261940,
+  "total_tokens_approx": 315467,
+  "roles": {
+    "deep-research/research_question_agent": {
+      "role_id": "research_question_agent",
+      "role_name": "research_question_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/research_question_agent.md",
+      "size_bytes": 10534,
+      "size_tokens_approx": 2633,
+      "short_description": "Transforms vague topics into precise, FINER-evaluated researchable questions through iterative refinement",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full",
+        "quick",
+        "socratic",
+        "lit-review",
+        "three-way-scan"
+      ],
+      "trigger_conditions": "Topic definition, research question refinement, FINER scoping",
+      "required_in": [
+        "full",
+        "socratic"
+      ],
+      "dependencies": []
+    },
+    "deep-research/research_architect_agent": {
+      "role_id": "research_architect_agent",
+      "role_name": "research_architect_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/research_architect_agent.md",
+      "size_bytes": 26183,
+      "size_tokens_approx": 6545,
+      "short_description": "Designs the methodological blueprint; selects research paradigm, method, data strategy, and analytical framework",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full",
+        "socratic",
+        "systematic-review"
+      ],
+      "trigger_conditions": "Methodology blueprint, research paradigm selection, data strategy",
+      "required_in": [
+        "full",
+        "socratic"
+      ],
+      "dependencies": [
+        "research_question_agent"
+      ]
+    },
+    "deep-research/bibliography_agent": {
+      "role_id": "bibliography_agent",
+      "role_name": "bibliography_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/bibliography_agent.md",
+      "size_bytes": 35771,
+      "size_tokens_approx": 8942,
+      "short_description": "Systematic literature search and curation; identifies, annotates, and formats sources in APA 7.0",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full",
+        "lit-review",
+        "three-way-scan",
+        "fact-check",
+        "systematic-review"
+      ],
+      "trigger_conditions": "Database queries, source retrieval, search strings, bibliography curation",
+      "required_in": [
+        "full",
+        "lit-review",
+        "three-way-scan"
+      ],
+      "dependencies": [
+        "research_architect_agent"
+      ]
+    },
+    "deep-research/source_verification_agent": {
+      "role_id": "source_verification_agent",
+      "role_name": "source_verification_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/source_verification_agent.md",
+      "size_bytes": 10758,
+      "size_tokens_approx": 2689,
+      "short_description": "Grades evidence, detects predatory publications, and fact-checks claims entering the research pipeline",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full",
+        "lit-review",
+        "fact-check",
+        "systematic-review"
+      ],
+      "trigger_conditions": "Evidence grading (I-VII), predatory journal screening, COI detection",
+      "required_in": [
+        "full",
+        "fact-check"
+      ],
+      "dependencies": [
+        "bibliography_agent"
+      ]
+    },
+    "deep-research/synthesis_agent": {
+      "role_id": "synthesis_agent",
+      "role_name": "synthesis_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/synthesis_agent.md",
+      "size_bytes": 29289,
+      "size_tokens_approx": 7322,
+      "short_description": "Integrates findings across sources, resolves evidence conflicts, and maps knowledge gaps",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full",
+        "lit-review",
+        "three-way-scan",
+        "systematic-review"
+      ],
+      "trigger_conditions": "Thematic cross-source synthesis, gap analysis, theoretical framing",
+      "required_in": [
+        "full",
+        "lit-review"
+      ],
+      "dependencies": [
+        "source_verification_agent"
+      ]
+    },
+    "deep-research/report_compiler_agent": {
+      "role_id": "report_compiler_agent",
+      "role_name": "report_compiler_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/report_compiler_agent.md",
+      "size_bytes": 27011,
+      "size_tokens_approx": 6752,
+      "short_description": "Transforms research findings into polished APA 7.0 academic reports; activated in Phase 4 and Phase 6",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full",
+        "quick",
+        "systematic-review"
+      ],
+      "trigger_conditions": "Compiling final structured report (APA 7.0 / PRISMA)",
+      "required_in": [
+        "full",
+        "quick",
+        "systematic-review"
+      ],
+      "dependencies": [
+        "synthesis_agent"
+      ]
+    },
+    "deep-research/editor_in_chief_agent": {
+      "role_id": "editor_in_chief_agent",
+      "role_name": "editor_in_chief_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/editor_in_chief_agent.md",
+      "size_bytes": 8258,
+      "size_tokens_approx": 2064,
+      "short_description": "Q1 journal editorial review; delivers Accept/Reject verdict with actionable feedback on research reports",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full",
+        "review"
+      ],
+      "trigger_conditions": "Final report review, quality scoring, editorial verdict",
+      "required_in": [
+        "full",
+        "review"
+      ],
+      "dependencies": [
+        "report_compiler_agent"
+      ]
+    },
+    "deep-research/devils_advocate_agent": {
+      "role_id": "devils_advocate_agent",
+      "role_name": "devils_advocate_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/devils_advocate_agent.md",
+      "size_bytes": 11418,
+      "size_tokens_approx": 2854,
+      "short_description": "Challenges assumptions, tests logical chains, and stress-tests research arguments at mandatory checkpoints",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full",
+        "review"
+      ],
+      "trigger_conditions": "Checkpoint critique, counter-argument stress tests, cherry-picking checks",
+      "required_in": [
+        "full"
+      ],
+      "dependencies": [
+        "research_question_agent",
+        "synthesis_agent"
+      ]
+    },
+    "deep-research/ethics_review_agent": {
+      "role_id": "ethics_review_agent",
+      "role_name": "ethics_review_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/ethics_review_agent.md",
+      "size_bytes": 22467,
+      "size_tokens_approx": 5616,
+      "short_description": "Research ethics self-check (before a human committee/IRB, not a replacement); confirms Critical integrity concerns before delivery \u2014 stops the user once, overridable, never a veto",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full",
+        "systematic-review"
+      ],
+      "trigger_conditions": "Ethics screening, human subjects administrative status, dual-use checks",
+      "required_in": [
+        "full"
+      ],
+      "dependencies": [
+        "report_compiler_agent"
+      ]
+    },
+    "deep-research/socratic_mentor_agent": {
+      "role_id": "socratic_mentor_agent",
+      "role_name": "socratic_mentor_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/socratic_mentor_agent.md",
+      "size_bytes": 54356,
+      "size_tokens_approx": 13589,
+      "short_description": "Guides researchers through Socratic questioning to clarify and sharpen their research thinking",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "socratic"
+      ],
+      "trigger_conditions": "Guided research exploration, cognitive scaffolding, question taxonomy",
+      "required_in": [
+        "socratic"
+      ],
+      "dependencies": []
+    },
+    "deep-research/risk_of_bias_agent": {
+      "role_id": "risk_of_bias_agent",
+      "role_name": "risk_of_bias_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/risk_of_bias_agent.md",
+      "size_bytes": 12702,
+      "size_tokens_approx": 3175,
+      "short_description": "Assesses risk of bias in included studies using RoB 2 (RCTs) and ROBINS-I (non-randomized studies)",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "systematic-review"
+      ],
+      "trigger_conditions": "RoB 2 / ROBINS-I study-level risk assessment in evidence synthesis",
+      "required_in": [
+        "systematic-review"
+      ],
+      "dependencies": [
+        "source_verification_agent"
+      ]
+    },
+    "deep-research/meta_analysis_agent": {
+      "role_id": "meta_analysis_agent",
+      "role_name": "meta_analysis_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/meta_analysis_agent.md",
+      "size_bytes": 17025,
+      "size_tokens_approx": 4256,
+      "short_description": "Quantitative synthesis of included studies; computes effect sizes, assesses heterogeneity, and applies GRADE framework",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "systematic-review"
+      ],
+      "trigger_conditions": "Quantitative effect size pooling, heterogeneity (I^2), funnel plot asymmetry",
+      "required_in": [],
+      "dependencies": [
+        "synthesis_agent"
+      ]
+    },
+    "deep-research/monitoring_agent": {
+      "role_id": "monitoring_agent",
+      "role_name": "monitoring_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/monitoring_agent.md",
+      "size_bytes": 9641,
+      "size_tokens_approx": 2410,
+      "short_description": "Post-research literature monitoring; helps users track new publications and developments after a research project is complete",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full"
+      ],
+      "trigger_conditions": "Literature update tracking, post-publication alerts, RSS monitoring strategy",
+      "required_in": [],
+      "dependencies": []
+    },
+    "deep-research/timeline_extraction_agent": {
+      "role_id": "timeline_extraction_agent",
+      "role_name": "timeline_extraction_agent",
+      "skill": "deep-research",
+      "prompt_file": "deep-research/agents/timeline_extraction_agent.md",
+      "size_bytes": 9426,
+      "size_tokens_approx": 2356,
+      "short_description": "Extracts per-source temporal facts and citation provenance into Phase 2 sidecar artifacts; activated in Phase 2 (Investigation)",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "full",
+        "lit-review"
+      ],
+      "trigger_conditions": "Chronological evolution of scientific concepts, discovery timeline mapping",
+      "required_in": [],
+      "dependencies": [
+        "synthesis_agent"
+      ]
+    },
+    "academic-paper/intake_agent": {
+      "role_id": "intake_agent",
+      "role_name": "intake_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/intake_agent.md",
+      "size_bytes": 26500,
+      "size_tokens_approx": 6625,
+      "short_description": "Conducts the paper configuration interview and produces the Paper Configuration Record for downstream agents",
+      "applicable_stages": [
+        2
+      ],
+      "applicable_modes": [
+        "full",
+        "plan",
+        "outline-only",
+        "lit-review"
+      ],
+      "trigger_conditions": "Phase 0 configuration interview, target journal/citation selection",
+      "required_in": [
+        "full",
+        "plan",
+        "outline-only"
+      ],
+      "dependencies": []
+    },
+    "academic-paper/literature_strategist_agent": {
+      "role_id": "literature_strategist_agent",
+      "role_name": "literature_strategist_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/literature_strategist_agent.md",
+      "size_bytes": 48323,
+      "size_tokens_approx": 12080,
+      "short_description": "Designs the literature search strategy and manages source selection for the paper",
+      "applicable_stages": [
+        2
+      ],
+      "applicable_modes": [
+        "full",
+        "lit-review"
+      ],
+      "trigger_conditions": "Phase 1 literature search and bibliography construction for paper writing",
+      "required_in": [
+        "full",
+        "lit-review"
+      ],
+      "dependencies": [
+        "intake_agent"
+      ]
+    },
+    "academic-paper/structure_architect_agent": {
+      "role_id": "structure_architect_agent",
+      "role_name": "structure_architect_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/structure_architect_agent.md",
+      "size_bytes": 19761,
+      "size_tokens_approx": 4940,
+      "short_description": "Designs the papers section architecture and detailed outline before drafting begins",
+      "applicable_stages": [
+        2
+      ],
+      "applicable_modes": [
+        "full",
+        "plan",
+        "outline-only"
+      ],
+      "trigger_conditions": "Phase 2 structure selection, detailed section outline, word count budget",
+      "required_in": [
+        "full",
+        "plan",
+        "outline-only"
+      ],
+      "dependencies": [
+        "intake_agent"
+      ]
+    },
+    "academic-paper/argument_builder_agent": {
+      "role_id": "argument_builder_agent",
+      "role_name": "argument_builder_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/argument_builder_agent.md",
+      "size_bytes": 11440,
+      "size_tokens_approx": 2860,
+      "short_description": "Constructs the papers core argument and logical reasoning structure",
+      "applicable_stages": [
+        2
+      ],
+      "applicable_modes": [
+        "full",
+        "plan"
+      ],
+      "trigger_conditions": "Phase 3 Claim-Evidence-Reasoning (CER) chains, thesis defense blueprint",
+      "required_in": [
+        "full",
+        "plan"
+      ],
+      "dependencies": [
+        "structure_architect_agent"
+      ]
+    },
+    "academic-paper/draft_writer_agent": {
+      "role_id": "draft_writer_agent",
+      "role_name": "draft_writer_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/draft_writer_agent.md",
+      "size_bytes": 58165,
+      "size_tokens_approx": 14541,
+      "short_description": "Writes the full paper draft section by section from the structured outline and Paper Configuration Record",
+      "applicable_stages": [
+        2,
+        4
+      ],
+      "applicable_modes": [
+        "full",
+        "revision"
+      ],
+      "trigger_conditions": "Phase 4 section-by-section writing and revision drafting",
+      "required_in": [
+        "full",
+        "revision"
+      ],
+      "dependencies": [
+        "argument_builder_agent"
+      ]
+    },
+    "academic-paper/citation_compliance_agent": {
+      "role_id": "citation_compliance_agent",
+      "role_name": "citation_compliance_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/citation_compliance_agent.md",
+      "size_bytes": 24514,
+      "size_tokens_approx": 6128,
+      "short_description": "Verifies citations against the target journals format requirements and flags non-compliant entries",
+      "applicable_stages": [
+        2,
+        5
+      ],
+      "applicable_modes": [
+        "full",
+        "citation-check"
+      ],
+      "trigger_conditions": "Phase 5a in-text citation <-> reference list zero-orphan audit",
+      "required_in": [
+        "full",
+        "citation-check"
+      ],
+      "dependencies": [
+        "draft_writer_agent"
+      ]
+    },
+    "academic-paper/abstract_bilingual_agent": {
+      "role_id": "abstract_bilingual_agent",
+      "role_name": "abstract_bilingual_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/abstract_bilingual_agent.md",
+      "size_bytes": 12497,
+      "size_tokens_approx": 3124,
+      "short_description": "Writes and translates abstracts in English and the target language to journal format standards",
+      "applicable_stages": [
+        2
+      ],
+      "applicable_modes": [
+        "full",
+        "abstract-only"
+      ],
+      "trigger_conditions": "Phase 5b paired bilingual abstract (default zh-TW + EN) generation",
+      "required_in": [
+        "full",
+        "abstract-only"
+      ],
+      "dependencies": [
+        "draft_writer_agent"
+      ]
+    },
+    "academic-paper/peer_reviewer_agent": {
+      "role_id": "peer_reviewer_agent",
+      "role_name": "peer_reviewer_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/peer_reviewer_agent.md",
+      "size_bytes": 30691,
+      "size_tokens_approx": 7672,
+      "short_description": "Simulates peer review to identify weaknesses and suggest improvements before submission",
+      "applicable_stages": [
+        2
+      ],
+      "applicable_modes": [
+        "full"
+      ],
+      "trigger_conditions": "Phase 6 simulated internal double-blind peer review report",
+      "required_in": [
+        "full"
+      ],
+      "dependencies": [
+        "draft_writer_agent"
+      ]
+    },
+    "academic-paper/formatter_agent": {
+      "role_id": "formatter_agent",
+      "role_name": "formatter_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/formatter_agent.md",
+      "size_bytes": 66094,
+      "size_tokens_approx": 16523,
+      "short_description": "Formats the final manuscript output to target journal style requirements",
+      "applicable_stages": [
+        5
+      ],
+      "applicable_modes": [
+        "full",
+        "format-convert",
+        "disclosure"
+      ],
+      "trigger_conditions": "Phase 7 document formatting (LaTeX, DOCX, PDF) and journal styling",
+      "required_in": [
+        "format-convert",
+        "disclosure"
+      ],
+      "dependencies": [
+        "draft_writer_agent"
+      ]
+    },
+    "academic-paper/socratic_mentor_agent": {
+      "role_id": "socratic_mentor_agent",
+      "role_name": "socratic_mentor_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/socratic_mentor_agent.md",
+      "size_bytes": 29111,
+      "size_tokens_approx": 7277,
+      "short_description": "Guides paper authors through Socratic questions to sharpen arguments and surface unstated assumptions",
+      "applicable_stages": [
+        2
+      ],
+      "applicable_modes": [
+        "plan"
+      ],
+      "trigger_conditions": "Plan mode chapter-by-chapter Socratic dialogue and INSIGHT harvesting",
+      "required_in": [
+        "plan"
+      ],
+      "dependencies": [
+        "intake_agent"
+      ]
+    },
+    "academic-paper/visualization_agent": {
+      "role_id": "visualization_agent",
+      "role_name": "visualization_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/visualization_agent.md",
+      "size_bytes": 18048,
+      "size_tokens_approx": 4512,
+      "short_description": "Generates publication-quality figure specifications and chart descriptions for inclusion in the paper",
+      "applicable_stages": [
+        2,
+        5
+      ],
+      "applicable_modes": [
+        "full"
+      ],
+      "trigger_conditions": "Scientific figure and chart script generation (Python/R) with APA styling",
+      "required_in": [],
+      "dependencies": [
+        "structure_architect_agent"
+      ]
+    },
+    "academic-paper/revision_coach_agent": {
+      "role_id": "revision_coach_agent",
+      "role_name": "revision_coach_agent",
+      "skill": "academic-paper",
+      "prompt_file": "academic-paper/agents/revision_coach_agent.md",
+      "size_bytes": 20852,
+      "size_tokens_approx": 5213,
+      "short_description": "Parses reviewer or real-committee comments into source-accounted plans and response skeletons",
+      "applicable_stages": [
+        4
+      ],
+      "applicable_modes": [
+        "revision-coach",
+        "rebuttal-audit"
+      ],
+      "trigger_conditions": "Parsing unstructured reviews into Revision Roadmap and Response Skeleton",
+      "required_in": [
+        "revision-coach",
+        "rebuttal-audit"
+      ],
+      "dependencies": []
+    },
+    "academic-paper-reviewer/field_analyst_agent": {
+      "role_id": "field_analyst_agent",
+      "role_name": "field_analyst_agent",
+      "skill": "academic-paper-reviewer",
+      "prompt_file": "academic-paper-reviewer/agents/field_analyst_agent.md",
+      "size_bytes": 11731,
+      "size_tokens_approx": 2932,
+      "short_description": "Identifies the papers field and dynamically configures the reviewer teams identities and expertise",
+      "applicable_stages": [
+        3
+      ],
+      "applicable_modes": [
+        "full",
+        "quick",
+        "guided",
+        "methodology-focus",
+        "calibration"
+      ],
+      "trigger_conditions": "Phase 0 paper analysis, domain detection, generating Reviewer Cards",
+      "required_in": [
+        "full",
+        "quick",
+        "guided",
+        "methodology-focus",
+        "calibration"
+      ],
+      "dependencies": []
+    },
+    "academic-paper-reviewer/eic_agent": {
+      "role_id": "eic_agent",
+      "role_name": "eic_agent",
+      "skill": "academic-paper-reviewer",
+      "prompt_file": "academic-paper-reviewer/agents/eic_agent.md",
+      "size_bytes": 29146,
+      "size_tokens_approx": 7286,
+      "short_description": "Journal-Fit Reviewer seat; contributes the journal-fit / originality / overall-quality review card \u2014 the final editorial decision is editorial_synthesizer_agent's Phase 2 work",
+      "applicable_stages": [
+        3
+      ],
+      "applicable_modes": [
+        "full",
+        "quick",
+        "guided"
+      ],
+      "trigger_conditions": "Journal-Fit Reviewer: scope, readership, priority, editorial framing",
+      "required_in": [
+        "full",
+        "quick"
+      ],
+      "dependencies": [
+        "field_analyst_agent"
+      ]
+    },
+    "academic-paper-reviewer/methodology_reviewer_agent": {
+      "role_id": "methodology_reviewer_agent",
+      "role_name": "methodology_reviewer_agent",
+      "skill": "academic-paper-reviewer",
+      "prompt_file": "academic-paper-reviewer/agents/methodology_reviewer_agent.md",
+      "size_bytes": 45498,
+      "size_tokens_approx": 11374,
+      "short_description": "Peer Reviewer 1; assesses methodological soundness, research design validity, and statistical rigor",
+      "applicable_stages": [
+        3
+      ],
+      "applicable_modes": [
+        "full",
+        "methodology-focus",
+        "guided"
+      ],
+      "trigger_conditions": "Peer Reviewer 1: research design rigor, statistics, reproducibility",
+      "required_in": [
+        "full",
+        "methodology-focus"
+      ],
+      "dependencies": [
+        "field_analyst_agent"
+      ]
+    },
+    "academic-paper-reviewer/domain_reviewer_agent": {
+      "role_id": "domain_reviewer_agent",
+      "role_name": "domain_reviewer_agent",
+      "skill": "academic-paper-reviewer",
+      "prompt_file": "academic-paper-reviewer/agents/domain_reviewer_agent.md",
+      "size_bytes": 34589,
+      "size_tokens_approx": 8647,
+      "short_description": "Peer Reviewer 2; assesses domain expertise, substantive accuracy, and field-specific adequacy",
+      "applicable_stages": [
+        3
+      ],
+      "applicable_modes": [
+        "full",
+        "guided"
+      ],
+      "trigger_conditions": "Peer Reviewer 2: domain literature coverage, theoretical contribution",
+      "required_in": [
+        "full"
+      ],
+      "dependencies": [
+        "field_analyst_agent"
+      ]
+    },
+    "academic-paper-reviewer/perspective_reviewer_agent": {
+      "role_id": "perspective_reviewer_agent",
+      "role_name": "perspective_reviewer_agent",
+      "skill": "academic-paper-reviewer",
+      "prompt_file": "academic-paper-reviewer/agents/perspective_reviewer_agent.md",
+      "size_bytes": 34939,
+      "size_tokens_approx": 8734,
+      "short_description": "Peer Reviewer 3; evaluates cross-disciplinary relevance, broader impact, and alternative interpretations",
+      "applicable_stages": [
+        3
+      ],
+      "applicable_modes": [
+        "full",
+        "guided"
+      ],
+      "trigger_conditions": "Peer Reviewer 3: cross-disciplinary potential, policy/social impact",
+      "required_in": [
+        "full"
+      ],
+      "dependencies": [
+        "field_analyst_agent"
+      ]
+    },
+    "academic-paper-reviewer/devils_advocate_reviewer_agent": {
+      "role_id": "devils_advocate_reviewer_agent",
+      "role_name": "devils_advocate_reviewer_agent",
+      "skill": "academic-paper-reviewer",
+      "prompt_file": "academic-paper-reviewer/agents/devils_advocate_reviewer_agent.md",
+      "size_bytes": 43461,
+      "size_tokens_approx": 10865,
+      "short_description": "Challenges core arguments and logical coherence as the devils advocate reviewer in the editorial panel",
+      "applicable_stages": [
+        3
+      ],
+      "applicable_modes": [
+        "full"
+      ],
+      "trigger_conditions": "Review seat 5: hardest counter-arguments, cherry-picking, bias audit",
+      "required_in": [
+        "full"
+      ],
+      "dependencies": [
+        "field_analyst_agent"
+      ]
+    },
+    "academic-paper-reviewer/editorial_synthesizer_agent": {
+      "role_id": "editorial_synthesizer_agent",
+      "role_name": "editorial_synthesizer_agent",
+      "skill": "academic-paper-reviewer",
+      "prompt_file": "academic-paper-reviewer/agents/editorial_synthesizer_agent.md",
+      "size_bytes": 43301,
+      "size_tokens_approx": 10825,
+      "short_description": "Synthesizes all reviewer reports into a unified editorial decision letter and revision roadmap",
+      "applicable_stages": [
+        3
+      ],
+      "applicable_modes": [
+        "full",
+        "methodology-focus",
+        "re-review",
+        "calibration"
+      ],
+      "trigger_conditions": "Phase 2 synthesis: Editorial Decision Letter and immutable Revision Roadmap",
+      "required_in": [
+        "full",
+        "re-review",
+        "calibration"
+      ],
+      "dependencies": [
+        "methodology_reviewer_agent",
+        "domain_reviewer_agent"
+      ]
+    },
+    "academic-pipeline/pipeline_orchestrator_agent": {
+      "role_id": "pipeline_orchestrator_agent",
+      "role_name": "pipeline_orchestrator_agent",
+      "skill": "academic-pipeline",
+      "prompt_file": "academic-pipeline/agents/pipeline_orchestrator_agent.md",
+      "size_bytes": 180206,
+      "size_tokens_approx": 45051,
+      "short_description": "Orchestrates the full multi-skill academic research pipeline and manages agent handoffs across phases",
+      "applicable_stages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "applicable_modes": [
+        "(pipeline)"
+      ],
+      "trigger_conditions": "Full multi-stage pipeline orchestration, transitions, and checkpoints",
+      "required_in": [
+        "(pipeline)"
+      ],
+      "dependencies": []
+    },
+    "academic-pipeline/state_tracker_agent": {
+      "role_id": "state_tracker_agent",
+      "role_name": "state_tracker_agent",
+      "skill": "academic-pipeline",
+      "prompt_file": "academic-pipeline/agents/state_tracker_agent.md",
+      "size_bytes": 28023,
+      "size_tokens_approx": 7005,
+      "short_description": "Tracks pipeline state and maintains the research session history across multi-phase workflows",
+      "applicable_stages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "applicable_modes": [
+        "(pipeline)",
+        "resume_from_passport"
+      ],
+      "trigger_conditions": "Tracking stage deliverables, passport updates, revision loop count",
+      "required_in": [
+        "(pipeline)"
+      ],
+      "dependencies": []
+    },
+    "academic-pipeline/integrity_verification_agent": {
+      "role_id": "integrity_verification_agent",
+      "role_name": "integrity_verification_agent",
+      "skill": "academic-pipeline",
+      "prompt_file": "academic-pipeline/agents/integrity_verification_agent.md",
+      "size_bytes": 76176,
+      "size_tokens_approx": 19044,
+      "short_description": "Runs coverage-bounded checks on registered references, citation contexts, data surfaces, and claims before review and after revision",
+      "applicable_stages": [
+        2.5,
+        4.5
+      ],
+      "applicable_modes": [
+        "(pipeline)"
+      ],
+      "trigger_conditions": "Stage 2.5 and 4.5 integrity verification gates (claims, data, citations)",
+      "required_in": [
+        "(pipeline)"
+      ],
+      "dependencies": []
+    },
+    "academic-pipeline/collaboration_depth_agent": {
+      "role_id": "collaboration_depth_agent",
+      "role_name": "collaboration_depth_agent",
+      "skill": "academic-pipeline",
+      "prompt_file": "academic-pipeline/agents/collaboration_depth_agent.md",
+      "size_bytes": 10195,
+      "size_tokens_approx": 2548,
+      "short_description": "Post-hoc observer scoring user-AI collaboration depth against the canonical rubric; advisory-only, never blocks pipeline progression",
+      "applicable_stages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "applicable_modes": [
+        "(pipeline)"
+      ],
+      "trigger_conditions": "Advisory collaboration scoring at FULL/SLIM checkpoints and Stage 6",
+      "required_in": [],
+      "dependencies": []
+    },
+    "academic-pipeline/claim_ref_alignment_audit_agent": {
+      "role_id": "claim_ref_alignment_audit_agent",
+      "role_name": "claim_ref_alignment_audit_agent",
+      "skill": "academic-pipeline",
+      "prompt_file": "academic-pipeline/agents/claim_ref_alignment_audit_agent.md",
+      "size_bytes": 45813,
+      "size_tokens_approx": 11453,
+      "short_description": "L3 claim-faithfulness audit \u2014 judges every cited claim against the retrieved reference text, surfaces uncited assertions and constraint violations, and feeds the Stage 4\u21925 formatter hard gate",
+      "applicable_stages": [
+        2.5,
+        4.5
+      ],
+      "applicable_modes": [
+        "(pipeline)"
+      ],
+      "trigger_conditions": "Opt-in L3 claim-faithfulness audit (ARS_CLAIM_AUDIT=1)",
+      "required_in": [],
+      "dependencies": []
+    },
+    "sr-screener/protocol_architect_agent": {
+      "role_id": "protocol_architect_agent",
+      "role_name": "protocol_architect_agent",
+      "skill": "sr-screener",
+      "prompt_file": "sr-screener/agents/protocol_architect_agent.md",
+      "size_bytes": 6025,
+      "size_tokens_approx": 1506,
+      "short_description": "Turns a proposal or protocol into confirmed, stage-split screening rules and a screening config before any record is screened",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "protocol",
+        "pilot"
+      ],
+      "trigger_conditions": "Screening protocol design, eligibility criteria, exclusion codes",
+      "required_in": [
+        "protocol",
+        "pilot"
+      ],
+      "dependencies": []
+    },
+    "sr-screener/screening_reviewer_agent": {
+      "role_id": "screening_reviewer_agent",
+      "role_name": "screening_reviewer_agent",
+      "skill": "sr-screener",
+      "prompt_file": "sr-screener/agents/screening_reviewer_agent.md",
+      "size_bytes": 4989,
+      "size_tokens_approx": 1247,
+      "short_description": "Blinded screening reviewer for sr-screener: applies a confirmed protocol to one batch of records or one full-text report and returns one decision per record",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "quick",
+        "pilot",
+        "ta-screen",
+        "ft-screen",
+        "adjudicate",
+        "audit"
+      ],
+      "trigger_conditions": "Independent blinded record screening, conflict adjudication, and QC",
+      "required_in": [
+        "quick",
+        "pilot",
+        "ta-screen",
+        "ft-screen",
+        "adjudicate",
+        "audit"
+      ],
+      "dependencies": [
+        "protocol_architect_agent"
+      ]
+    },
+    "sr-screener/qc_auditor_agent": {
+      "role_id": "qc_auditor_agent",
+      "role_name": "qc_auditor_agent",
+      "skill": "sr-screener",
+      "prompt_file": "sr-screener/agents/qc_auditor_agent.md",
+      "size_bytes": 4762,
+      "size_tokens_approx": 1190,
+      "short_description": "Reports seeds, agreement, conflicts and recheck results after the pilot and the full run, and proposes protocol clarifications",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "pilot",
+        "ta-screen",
+        "audit"
+      ],
+      "trigger_conditions": "Senior quality control audit of excluded and borderline records",
+      "required_in": [
+        "ta-screen",
+        "audit"
+      ],
+      "dependencies": [
+        "screening_reviewer_agent"
+      ]
+    },
+    "sr-screener/reporter_agent": {
+      "role_id": "reporter_agent",
+      "role_name": "reporter_agent",
+      "skill": "sr-screener",
+      "prompt_file": "sr-screener/agents/reporter_agent.md",
+      "size_bytes": 3195,
+      "size_tokens_approx": 798,
+      "short_description": "Builds the screening deliverables (log, RIS groups, PRISMA counts, methods draft, corpus handoff) from complete decisions",
+      "applicable_stages": [
+        1
+      ],
+      "applicable_modes": [
+        "report",
+        "ta-screen",
+        "ft-screen"
+      ],
+      "trigger_conditions": "Compiling PRISMA flow numbers, screening log, and methods paragraph",
+      "required_in": [
+        "report",
+        "ta-screen",
+        "ft-screen"
+      ],
+      "dependencies": [
+        "screening_reviewer_agent"
+      ]
+    },
+    "shared/compliance_agent": {
+      "role_id": "compliance_agent",
+      "role_name": "compliance_agent",
+      "skill": "shared",
+      "prompt_file": "shared/agents/compliance_agent.md",
+      "size_bytes": 9056,
+      "size_tokens_approx": 2264,
+      "short_description": "Runs PRISMA-trAIce + RAISE compliance checks at Stage 2.5 / 4.5 integrity gates and emits Schema 12 compliance_report",
+      "applicable_stages": [
+        2,
+        5
+      ],
+      "applicable_modes": [
+        "full"
+      ],
+      "trigger_conditions": "RAISE compliance principles check before paper finalization",
+      "required_in": [],
+      "dependencies": []
+    }
+  }
+}

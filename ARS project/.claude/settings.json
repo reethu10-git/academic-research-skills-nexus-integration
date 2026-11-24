@@ -1,0 +1,9 @@
+{
+  "model": "nova-micro",
+  "effortLevel": "low",
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://nexusapi.navigatelabs.ai",
+    "ANTHROPIC_MODEL": "nova-micro",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "4096"
+  }
+}
